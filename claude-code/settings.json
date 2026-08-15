@@ -6,7 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Claude Code finished\" with title \"Claude Code\"' 2>/dev/null; afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true"
+            "command": "notify-send \"Claude Code\" \"Claude Code finished\" 2>/dev/null || osascript -e 'display notification \"Claude Code finished\" with title \"Claude Code\"' 2>/dev/null; pw-play \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || paplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true",
+            "async": true
           }
         ]
       }
@@ -16,7 +17,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'display notification \"Waiting for your input\" with title \"Claude Code\"' 2>/dev/null; afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true"
+            "command": "notify-send \"Claude Code\" \"Waiting for your input\" 2>/dev/null || osascript -e 'display notification \"Waiting for your input\" with title \"Claude Code\"' 2>/dev/null; pw-play \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || paplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true",
+            "async": true
           }
         ]
       }
@@ -24,7 +26,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "~/.claude-personal/statusline.sh",
+    "command": "\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/statusline.sh\"",
     "padding": 1,
     "refreshInterval": 5
   },

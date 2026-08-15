@@ -7,7 +7,9 @@ Meant to be dropped into a fresh machine to reproduce the same setup.
 
 - `settings.json` — model default, hooks (finish/notification sounds), statusline
   wiring, theme, effort level. Uses `$CLAUDE_CONFIG_DIR` (falling back to `~/.claude`)
-  for the sound path, so it works regardless of which config directory you use.
+  for the statusline and sound paths, so it works regardless of which config
+  directory you use. Hooks are cross-platform: `notify-send` or `osascript` for the
+  notification, `pw-play`/`paplay`/`afplay` for the sound — whichever exists.
 - `statusline.sh` — model + effort, project/branch, color-coded context-usage bar,
   and 5h/7d rate-limit usage with local reset times.
 - `sounds/` — notification sound used by the Stop/Notification hooks.
@@ -36,5 +38,6 @@ shell profile (e.g. `~/.zshrc`) before starting Claude Code:
 export CLAUDE_CONFIG_DIR="$HOME/.claude-personal"
 ```
 
-Requires `jq`, `git`, and (for the sound hooks) `afplay`/`osascript` — macOS only
-as written; adjust the hook commands in `settings.json` for other platforms.
+Requires `jq` and `git`. Works on Linux and macOS; the notification/sound hooks
+degrade to silence if none of `notify-send`/`osascript`/`pw-play`/`paplay`/`afplay`
+are present.
