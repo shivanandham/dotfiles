@@ -1,0 +1,34 @@
+{
+  "model": "sonnet",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code finished\" with title \"Claude Code\"' 2>/dev/null; afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Waiting for your input\" with title \"Claude Code\"' 2>/dev/null; afplay \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sounds/bruh_meme.mp3\" 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude-personal/statusline.sh",
+    "padding": 1,
+    "refreshInterval": 5
+  },
+  "effortLevel": "high",
+  "theme": "dark",
+  "preferredNotifChannel": "terminal_bell"
+}
